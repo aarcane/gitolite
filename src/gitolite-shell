@@ -76,6 +76,7 @@ sub in_http {
     $ENV{SSH_ORIGINAL_COMMAND} ||= '';
 
     $ENV{REMOTE_USER} ||= $rc{HTTP_ANON_USER};
+    $ENV{REMOTE_USER} =~ s./CN=..g;
     @ARGV = ( $ENV{REMOTE_USER} );
 
     my $ip;
